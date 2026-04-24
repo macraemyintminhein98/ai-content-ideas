@@ -1,17 +1,12 @@
-# AI Content Idea Generator
+# AI Content Ideas
 
-Generate high-quality content ideas (blog posts, social media updates, video topics) based on a user-provided keyword or niche. Simple UI, export to CSV, or copy to clipboard.
+Generate unique content ideas (blog posts, tweets, short videos) for any keyword or niche with AI. Get 5-10 actionable ideas instantly. Perfect for bloggers, small businesses, and content creators looking for quick inspiration.
 
-## Features
-- Input a keyword or niche.
-- Generate various content ideas.
-- Copy all ideas to clipboard.
-- Export ideas as a CSV file.
-- One-time purchase for full access.
+**Features:**
+- Input a keyword/niche
+- AI generates creative content ideas
+- Quick and easy to use
 
-## How to Use
-1. Enter your desired keyword or niche in the input field.
-2. Click 'Generate Ideas'.
-3. View your generated content ideas.
-4. Use 'Copy All' to copy to clipboard or 'Export CSV' to download.
-5. Purchase for full, unlimited access.
+**Price:** $9.99 (one-time purchase)
+
+**How to use:** Enter your desired keyword in the input field and click 'Generate Ideas'.
