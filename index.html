@@ -3,103 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Content Idea Generator</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Niche AI Content Ideas</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 600px; margin: auto; padding: 2em; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #007bff; }
+        p { text-align: center; margin-bottom: 2em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        input[type="text"] { width: calc(100% - 22px); padding: 10px; margin-bottom: 1em; border: 1px solid #ddd; border-radius: 4px; }
+        button { background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; display: block; width: 100%; font-size: 1em; }
+        button:hover { background-color: #218838; }
+        #ideas { margin-top: 2em; border-top: 1px solid #eee; padding-top: 1em; }
+        .idea-item { background-color: #e9ecef; margin-bottom: 0.5em; padding: 10px; border-radius: 4px; }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
-    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h1 class="text-3xl font-bold text-center mb-6">AI Content Ideas</h1>
-        <p class="text-center text-gray-600 mb-6">Get unique, SEO-friendly content ideas in seconds!</p>
-        <input type="text" id="keywordInput" placeholder="Enter your keyword/topic" class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <button id="generateButton" class="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition-colors duration-200">Generate Ideas</button>
-        <div id="loadingSpinner" class="hidden text-center mt-4">
-            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
-            <p class="text-gray-500 text-sm mt-2">Generating...</p>
-        </div>
-        <div id="results" class="mt-6">
-            <h2 id="resultsHeader" class="text-xl font-semibold mb-3 hidden">Your Content Ideas:</h2>
-            <ul id="ideaList" class="list-disc list-inside space-y-2 text-gray-800">
-                <!-- Ideas will be inserted here -->
-            </ul>
-        </div>
+<body>
+    <div class="container">
+        <h1>Niche AI Content Idea Generator</h1>
+        <p>Get 10 unique, SEO-friendly content ideas for your specific niche.</p>
+        <form id="ideaForm">
+            <label for="keyword">Enter your niche keyword:</label>
+            <input type="text" id="keyword" placeholder="e.g., 'sustainable urban farming'" required>
+            <button type="submit">Generate Ideas ($4.99)</button>
+        </form>
+        <div id="ideas"></div>
     </div>
     <script>
-        const keywordInput = document.getElementById('keywordInput');
-        const generateButton = document.getElementById('generateButton');
-        const loadingSpinner = document.getElementById('loadingSpinner');
-        const results = document.getElementById('results');
-        const resultsHeader = document.getElementById('resultsHeader');
-        const ideaList = document.getElementById('ideaList');
-
-        generateButton.addEventListener('click', async () => {
-            const keyword = keywordInput.value.trim();
-            if (!keyword) {
-                alert('Please enter a keyword or topic.');
-                return;
-            }
-
-            generateButton.disabled = true;
-            loadingSpinner.classList.remove('hidden');
-            ideaList.innerHTML = '';
-            resultsHeader.classList.add('hidden');
-
-            try {
-                // In a real Vercel deployment, this would call a serverless function
-                // For this mock, we simulate an API call
-                const response = await fetch('/api/generate-ideas', { // Placeholder API call
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ keyword })
+        document.getElementById('ideaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const keyword = document.getElementById('keyword').value;
+            document.getElementById('ideas').innerHTML = 'Loading ideas...';
+            // In a real app, this would trigger Stripe checkout then call a serverless function
+            // For this example, we simulate a response.
+            setTimeout(() => {
+                const dummyIdeas = [
+                    `Why ${keyword} is the future of food security.`,
+                    `Top 5 innovative techniques in ${keyword}.`,
+                    `Interview with a pioneer in ${keyword}.`,
+                    `The economic benefits of adopting ${keyword} practices.`,
+                    `Case study: Successful ${keyword} project in a dense city.`,
+                    `Beginner's guide to starting a ${keyword} initiative.`,
+                    `Addressing common challenges in ${keyword}.`,
+                    `How technology is transforming ${keyword}.`,
+                    `Community engagement strategies for ${keyword}.`,
+                    `The environmental impact of scalable ${keyword}.`
+                ];
+                let ideasHtml = '<h2>Your Ideas:</h2>';
+                dummyIdeas.forEach(idea => {
+                    ideasHtml += `<div class="idea-item">${idea}</div>`;
                 });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-
-                if (data.ideas && data.ideas.length > 0) {
-                    resultsHeader.classList.remove('hidden');
-                    data.ideas.forEach(idea => {
-                        const li = document.createElement('li');
-                        li.textContent = idea;
-                        ideaList.appendChild(li);
-                    });
-                } else {
-                    ideaList.innerHTML = '<li class="text-gray-500">No ideas generated. Try a different keyword!</li>';
-                }
-            } catch (error) {
-                console.error('Error generating ideas:', error);
-                ideaList.innerHTML = '<li class="text-red-500">Failed to generate ideas. Please try again later.</li>';
-            } finally {
-                generateButton.disabled = false;
-                loadingSpinner.classList.add('hidden');
-            }
+                document.getElementById('ideas').innerHTML = ideasHtml;
+            }, 2000);
         });
-
-        // Mock API endpoint for demonstration on Vercel dev. Replace with actual logic.
-        // Vercel serverless function would handle /api/generate-ideas
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-             // Mocking the fetch call for local development to avoid 404s
-            window.fetch = async (url, options) => {
-                if (url === '/api/generate-ideas') {
-                    return new Promise(resolve => {
-                        setTimeout(() => {
-                            const { keyword } = JSON.parse(options.body);
-                            const ideas = [
-                                `How to Master ${keyword} in 5 Easy Steps`,
-                                `The Ultimate Guide to ${keyword} (2024 Edition)`,
-                                `10 Common Mistakes People Make with ${keyword}`,
-                                `Interview: Experts Share Their Secrets on ${keyword}`,
-                                `Beyond Basics: Advanced Techniques for ${keyword}`
-                            ];
-                            resolve(new Response(JSON.stringify({ ideas }), { status: 200, headers: {'Content-Type': 'application/json'} }));
-                        }, 1500);
-                    });
-                }
-                return originalFetch(url, options);
-            };
-            const originalFetch = window.fetch;
-        }
     </script>
 </body>
 </html>
