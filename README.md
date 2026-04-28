@@ -1,5 +1,11 @@
-# Viral AI Content Ideas
+# AI Content Ideas
 
-Generate 10 viral-potential content ideas based on a keyword. Perfect for social media managers, content creators, and bloggers looking for trending topics. Just enter your keyword, hit generate, and get inspired!
+Instantly generate 5 unique, short content ideas from a single keyword. Perfect for bloggers, marketers, and content creators needing quick inspiration.
 
-**Note:** This is a frontend-only demonstration. A real product integrates with a backend service to call an LLM API (e.g., OpenAI, Google Gemini) to generate truly unique ideas. Stripe Checkout integration would also be handled via a backend.
+## How to Use
+
+1. Enter a keyword related to your topic.
+2. Click 'Generate Ideas'.
+3. Get 5 fresh content ideas to kickstart your creativity.
+
+Built with speed and novelty in mind. Powered by AI.
