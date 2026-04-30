@@ -1,11 +1,14 @@
 # AI Content Ideas
 
-Instantly generate 5 unique, short content ideas from a single keyword. Perfect for bloggers, marketers, and content creators needing quick inspiration.
+Generate unique blog posts, social media prompts, and video ideas instantly using AI. Input your topic, choose a tone and content type, and spark your creativity! Perfect for small businesses, bloggers, and content creators looking for fresh perspectives without the hefty price tag.
 
-## How to Use
+## Features
 
-1. Enter a keyword related to your topic.
-2. Click 'Generate Ideas'.
-3. Get 5 fresh content ideas to kickstart your creativity.
+- AI-powered content idea generation
+- Customizable tone and content type
+- Simple, intuitive interface
+- One-time purchase for unlimited ideas
 
-Built with speed and novelty in mind. Powered by AI.
+## Get Started
+
+Visit [your-vercel-app-url.vercel.app](https://ai-content-ideas.vercel.app) to start generating ideas!
